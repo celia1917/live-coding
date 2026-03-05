@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORE_OS // NEON_UNIFIED</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode" id="main-body">
+
+    <section id="auth-screen" class="os-login-overlay">
+        <div class="login-card">
+            <div class="user-avatar-login"><i class="ph-fill ph-shield-check"></i></div>
+            <h2 id="login-title">ACCESO AL NODO</h2>
+            <form id="login-form">
+                <div class="os-input-wrapper">
+                    <i class="ph-bold ph-user"></i>
+                    <input type="text" id="l-identity" placeholder="Usuario o Email" required>
+                </div>
+                <div class="os-input-wrapper">
+                    <i class="ph-bold ph-lock-key"></i>
+                    <input type="password" id="l-pass" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="os-primary-btn">INICIAR SESIÓN</button>
+                <div class="login-footer inline-links">
+                    <a href="#" class="neon-link highlight">Recuperar acceso</a>
+                    <span class="separator">|</span>
+                    <span class="action-link highlight" onclick="toggleAuthMode('reg')">Crear cuenta</span>
+                </div>
+            </form>
+
+            <form id="reg-form" style="display:none;">
+                <div class="os-input-wrapper"><i class="ph-bold ph-user-plus"></i><input type="text" id="r-user" placeholder="Usuario" required></div>
+                <div class="os-input-wrapper"><i class="ph-bold ph-envelope"></i><input type="email" id="r-email" placeholder="Email" required></div>
+                <div class="os-input-wrapper"><i class="ph-bold ph-key"></i><input type="password" id="r-pass" placeholder="Contraseña" required></div>
+                <button type="submit" class="os-primary-btn">REGISTRAR IDENTIDAD</button>
+                <div class="login-footer"><span class="action-link highlight" onclick="toggleAuthMode('login')">Volver</span></div>
+            </form>
+
+            <hr class="card-divider">
+            <div class="theme-switcher-container">
+                <button onclick="toggleTheme()" class="theme-mini-btn">
+                    <i id="theme-icon" class="ph-bold ph-sun"></i> 
+                    <span>CAMBIAR MODO</span>
+                </button>
+            </div>
+        </div>
+        <div class="corner-info"><div class="os-clock" id="sys-clock">00:00:00</div></div>
+    </section>
+
+    <section id="forum-section" class="desktop-environment" style="display:none;">
+        <header class="taskbar">
+            <div class="taskbar-left"><i class="ph-fill ph-command"></i><span class="neon-text">CORE_OS</span></div>
+            <div class="taskbar-center"><span id="active-window-title">CENTRO DE MENSAJES</span></div>
+            <div class="taskbar-right">
+                <span id="user-display" class="user-pill"></span>
+                <button onclick="location.reload()" class="exit-btn-neon">SALIR <i class="ph-bold ph-power"></i></button>
+            </div>
+        </header>
+
+        <div class="window-manager">
+            <div class="window window-sm">
+                <div class="window-header"><span>EXPLORADOR_NODOS</span></div>
+                <div class="window-content">
+                    <ul id="channel-list" class="modern-list"></ul>
+                    <button class="os-primary-btn" style="font-size: 0.65rem;" onclick="createNewForum()">+ NUEVO NODO</button>
+                </div>
+            </div>
+
+            <div class="window window-lg">
+                <div class="window-header">
+                    <span>TRANSMISIÓN: <b id="active-channel-name" class="neon-text">GENERAL</b></span>
+                </div>
+                <div id="messages-display" class="window-body"></div>
+                <form id="message-form" class="window-footer">
+                    <input type="text" id="m-text" placeholder="Escribir mensaje..." autocomplete="off">
+                    <button type="submit" class="send-btn-neon"><i class="ph-bold ph-paper-plane-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

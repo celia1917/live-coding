@@ -8,6 +8,25 @@ services:
       - ./backend:/app # Sincroniza tu código para ver cambios en vivo
     environment:
       - NODE_ENV=production
+  db:
+    image: postgres:15
+    container_name: core_db_container
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: neon_pass
+      POSTGRES_DB: core_db
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: core_backend_container
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://admin:neon_pass@db/core_db
 
   # Servicio del Frontend (Servidor web sencillo)
   web:
@@ -16,3 +35,4 @@ services:
       - "8080:80"    # Entrarás a tu app desde http://localhost:8080
     volumes:
       - ./frontend:/usr/share/nginx/html # Sirve tus archivos HTML/JS
+

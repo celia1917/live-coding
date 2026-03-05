@@ -16,3 +16,11 @@ EXPOSE 3000
 
 # Comando para arrancar la app
 CMD ["node", "app.js"]
+
+FROM python:3.10-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+# Iniciamos el servidor en el puerto 8000
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

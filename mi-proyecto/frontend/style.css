@@ -1,0 +1,73 @@
+:root {
+    --black: #080808; --dark: #121212; --neon: #00ff66; --text: #ffffff;
+    --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.1);
+}
+
+.light-mode {
+    --black: #f0f2f5; --dark: #ffffff; --neon: #00a854; --text: #1a1a1a;
+    --glass: rgba(0, 0, 0, 0.03); --border: rgba(0, 0, 0, 0.1);
+}
+
+body { margin: 0; padding: 0; height: 100vh; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--black); color: var(--text); overflow: hidden; }
+
+/* --- LOGIN CARD --- */
+.os-login-overlay { height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, var(--dark) 0%, var(--black) 100%); }
+.login-card { background: var(--dark); border: 1px solid var(--border); border-radius: 24px; padding: 40px; width: 380px; text-align: center; }
+.os-input-wrapper { background: var(--glass); border: 1px solid var(--border); border-radius: 12px; display: flex; align-items: center; padding: 4px 15px; margin-bottom: 15px; }
+.os-input-wrapper input { background: transparent !important; border: none !important; color: var(--text) !important; padding: 12px 0 !important; flex-grow: 1; }
+
+/* CLASE MAESTRA: BOTÓN VERDE FONDO / LETRA NEGRA */
+.os-primary-btn, .exit-btn-neon, .send-btn-neon { 
+    background: var(--neon) !important; 
+    color: #000 !important; 
+    border: none !important; 
+    border-radius: 10px; 
+    font-weight: 800; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+
+/* Ajustes específicos de botones */
+.os-primary-btn { width: 100%; padding: 14px; margin-top: 10px; font-size: 0.8rem; }
+.exit-btn-neon { padding: 6px 12px; font-size: 0.65rem; }
+.send-btn-neon { width: 50px; height: 45px; border-radius: 10px; font-size: 1.2rem; }
+
+.os-primary-btn:hover, .exit-btn-neon:hover, .send-btn-neon:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 255, 102, 0.3);
+}
+
+/* ELEMENTOS AUXILIARES */
+.inline-links { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+.highlight { color: var(--neon) !important; font-size: 0.7rem; font-weight: 700; text-decoration: none; cursor: pointer; }
+.card-divider { border: 0; border-top: 1px solid var(--border); margin: 25px 0; }
+.theme-mini-btn { background: transparent; border: 1px solid var(--neon); color: var(--neon); padding: 8px 16px; border-radius: 30px; cursor: pointer; font-size: 0.65rem; font-weight: 800; }
+
+/* --- INTERFAZ DESKTOP --- */
+.desktop-environment { height: 100vh; background: var(--black); display: flex; flex-direction: column; }
+.taskbar { height: 60px; background: var(--dark); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 25px; }
+.neon-text { color: var(--neon); font-weight: 800; }
+.user-pill { color: var(--neon); font-size: 0.7rem; font-weight: 800; margin-right: 15px; border-right: 1px solid var(--border); padding-right: 15px; }
+
+.window-manager { flex-grow: 1; display: flex; padding: 20px; gap: 20px; }
+.window { background: var(--dark); border: 1px solid var(--border); border-radius: 20px; display: flex; flex-direction: column; overflow: hidden; }
+.window-sm { width: 280px; } .window-lg { flex-grow: 1; }
+
+.window-header { padding: 15px 20px; border-bottom: 1px solid var(--border); font-size: 0.65rem; font-weight: 800; opacity: 0.7; }
+.window-body { flex-grow: 1; padding: 20px; overflow-y: auto; }
+.window-footer { padding: 15px; display: flex; gap: 10px; border-top: 1px solid var(--border); background: var(--black); }
+.window-footer input { background: var(--glass); border: 1px solid var(--border); border-radius: 10px; color: var(--text); flex-grow: 1; padding: 10px 15px; }
+
+.msg-bubble { background: var(--glass); padding: 12px 18px; border-radius: 15px; margin-bottom: 15px; border-left: 4px solid var(--neon); }
+.modern-list { list-style: none; padding: 0; margin-bottom: 20px; }
+.modern-list li { padding: 12px 15px; cursor: pointer; font-size: 0.8rem; border-radius: 10px; margin-bottom: 4px; transition: 0.2s; }
+.modern-list li:hover { background: var(--glass); }
+.modern-list li.active { background: var(--neon); color: #000; font-weight: 800; }
+
+.corner-info { position: fixed; bottom: 30px; right: 40px; }
+.os-clock { font-size: 2.5rem; font-weight: 800; font-family: 'JetBrains Mono'; }
